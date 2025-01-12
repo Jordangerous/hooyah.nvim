@@ -193,6 +193,13 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+map("t", '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
+map("t", '<C-n>', [[<C-\><C-n>]], { noremap = true, silent = true })
+map('n', '<C-h>', '<C-w>h', { noremap = true, silent = true, desc = 'Move to the left window' })
+map('n', '<C-j>', '<C-w>j', { noremap = true, silent = true, desc = 'Move to the below window' })
+map('n', '<C-k>', '<C-w>k', { noremap = true, silent = true, desc = 'Move to the above window' })
+map('n', '<C-l>', '<C-w>l', { noremap = true, silent = true, desc = 'Move to the right window' })
+
 -- native snippets. only needed on < 0.11, as 0.11 creates these by default
 if vim.fn.has("nvim-0.11") == 0 then
   map("s", "<Tab>", function()
