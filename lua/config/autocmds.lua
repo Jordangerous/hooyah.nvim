@@ -113,6 +113,10 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   end,
 })
 
+vim.diagnostic.config {
+  virtual_text = false, -- Disable inline text
+}
+
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   group = augroup 'auto_create_dir',

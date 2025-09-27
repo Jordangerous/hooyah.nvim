@@ -2,6 +2,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
+vim.g.python3_host_prog = os.getenv 'PYTHON3_HOST_PROG'
 -- LazyVim auto format
 vim.g.autoformat = true
 
@@ -15,6 +16,7 @@ vim.g.snacks_animate = true
 -- enabled with `:LazyExtras`
 vim.g.lazyvim_picker = 'auto'
 
+vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 -- LazyVim completion engine to use.
 -- Can be one of: nvim-cmp, blink.cmp
 -- Leave it to "auto" to automatically use the completion engine
@@ -113,12 +115,12 @@ opt.wrap = false -- Disable line wrap
 
 if vim.fn.has 'nvim-0.10' == 1 then
   opt.smoothscroll = true
-  opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
+  opt.foldexpr = 'v:lua.LazyVim.treesitter.foldexpr()'
   opt.foldmethod = 'expr'
   opt.foldtext = ''
 else
   opt.foldmethod = 'indent'
-  opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
+  opt.foldtext = 'v:lua.LazyVim.treesitter.foldtext()'
 end
 
 -- Fix markdown indentation settings

@@ -2,7 +2,7 @@
 
 -- DO NOT USE `LazyVim.safe_keymap_set` IN YOUR OWN CONFIG!!
 -- use `vim.keymap.set` instead
-local map = LazyVim.safe_keymap_set
+local map = vim.keymap.set
 
 -- better up/down
 map({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
@@ -31,10 +31,10 @@ map('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc 
 map('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
 
 -- buffers
+map('n', '<Tab>', '<cmd>bnext<cr>', { desc = 'Next Buffer (Tab)' })
+map('n', '<S-Tab>', '<cmd>bprevious<cr>', { desc = 'Previous Buffer (Shift-Tab)' })
 map('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 map('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
-map('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
-map('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 map('n', '<leader>bb', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 map('n', '<leader>`', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
 map('n', '<leader>bd', function()
@@ -168,7 +168,7 @@ map("n", "<leader>L", function() LazyVim.news.changelog() end, { desc = "LazyVim
 
 -- floating terminal
 map("n", "<leader>fT", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
-map("n", "<leader>ft", function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
+map("n", "<leader>ft", function() Snacks.terminal(nil, { cwd = LazyVim.root(), size = { height = 0.2} }) end, { desc = "Terminal (Root Dir)" })
 map("n", "<c-/>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
 map("n", "<c-_>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "which_key_ignore" })
 
