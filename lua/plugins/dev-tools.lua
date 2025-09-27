@@ -103,10 +103,8 @@ return {
     },
     opts = function()
       return {
-        settings = {
-          options = {
-            notify_user_on_venv_activation = true,
-          },
+        options = {
+          notify_user_on_venv_activation = true,
         },
       }
     end,
